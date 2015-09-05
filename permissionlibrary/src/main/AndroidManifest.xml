@@ -1,0 +1,16 @@
+<manifest package="com.balda.permissionlibrary"
+          xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <application
+        android:fullBackupContent="false"
+        android:allowBackup="true"
+        android:label="@string/app_name">
+
+        <receiver
+            android:name=".permissions.PermissionReceiver"
+            android:enabled="true"
+            android:exported="false"/>
+
+    </application>
+
+</manifest>
