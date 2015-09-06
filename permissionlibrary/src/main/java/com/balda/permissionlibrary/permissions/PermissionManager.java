@@ -24,6 +24,8 @@ public class PermissionManager {
     private static final int NOTIFICATION_ID = 1;
 
     public PermissionManager(Activity a) {
+        if (a == null)
+            throw new IllegalArgumentException("Activity cannot be null");
         this.activity = a;
     }
 
