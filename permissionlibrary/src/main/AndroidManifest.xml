@@ -6,11 +6,6 @@
         android:allowBackup="true"
         android:label="@string/app_name">
 
-        <receiver
-            android:name=".permissions.PermissionReceiver"
-            android:enabled="true"
-            android:exported="false"/>
-
     </application>
 
 </manifest>

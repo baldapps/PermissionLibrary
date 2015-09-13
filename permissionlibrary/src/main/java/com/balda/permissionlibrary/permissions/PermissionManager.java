@@ -7,7 +7,9 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.graphics.Color;
+import android.net.Uri;
 import android.os.Build;
+import android.provider.Settings;
 import android.support.annotation.StringRes;
 import android.support.v4.app.NotificationCompat;
 
@@ -131,8 +133,11 @@ public class PermissionManager {
                 res = false;
                 NotificationManager manager = (NotificationManager) context.getSystemService(Context
                         .NOTIFICATION_SERVICE);
-                PendingIntent pi = PendingIntent.getBroadcast(context, 0, new Intent(context, PermissionReceiver.class),
-                        PendingIntent.FLAG_ONE_SHOT);
+                Intent i = new Intent(Settings.ACTION_APPLICATION_DETAILS_SETTINGS);
+                i.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                i.addCategory(Intent.CATEGORY_DEFAULT);
+                i.setData(Uri.parse("package:" + context.getPackageName()));
+                PendingIntent pi = PendingIntent.getActivity(context, 0, i, PendingIntent.FLAG_ONE_SHOT);
                 NotificationCompat.Builder mBuilder = new NotificationCompat.Builder(context)
                         .setAutoCancel(true)
                         .setColor(Color.RED)
