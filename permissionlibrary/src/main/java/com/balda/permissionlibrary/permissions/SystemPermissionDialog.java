@@ -34,7 +34,14 @@ public class SystemPermissionDialog extends DialogFragment {
                 .setPositiveButton(R.string.settings,
                         new DialogInterface.OnClickListener() {
                             public void onClick(DialogInterface dialog, int whichButton) {
-                                PermissionReceiver.openSystemDialog(getActivity());
+                                Intent i = new Intent(Settings.ACTION_APPLICATION_DETAILS_SETTINGS);
+                                i.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                                i.addCategory(Intent.CATEGORY_DEFAULT);
+                                i.setData(Uri.parse("package:" + getActivity().getPackageName()));
+                                try {
+                                    startActivity(i);
+                                } catch (Exception ignored) {
+                                }
                             }
                         }
                 ).create();
