@@ -54,10 +54,10 @@ public class PermissionManager {
 
         for (String p : perms) {
             if (PackageManager.PERMISSION_GRANTED != activity.checkSelfPermission(p)) {
-                res = false;
+                return false;
             }
         }
-        return res;
+        return true;
     }
 
     /**
